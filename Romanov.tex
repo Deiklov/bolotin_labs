@@ -74,22 +74,26 @@ $y'=h(\Theta)+\delta y$
 
 Матрица Крамера-Рао имеет вид
 $\Phi(\theta)=\frac{\partial h}{\partial \theta}\cdot R^{-1} \cdot \left(\frac{\partial h}{\partial \theta}\right)^T$
-$$\alpha'(t)=\arctan(\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{x_2t+x_4})+\delta \alpha$$
+$$\alpha'(t)=\arcctg(\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{x_2t+x_4})+\delta \alpha$$
 
 
 Пусть 
-$$B(t)=\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{ x_2t+x_4}$$
+$$B(t)=\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{x_2t+x_4}$$
 $$
-\frac{\partial h}{\partial x_1}=\frac{1}{1+B(t)^2}\cdot\frac{t(x_2+x_4)}{(x_2t+x_4)^2}=-\frac{1}{1+B(t)^2}\cdot\frac{t}{x_2t+x_4}
-$$
-$$
-\frac{\partial h}{\partial x_2}=\frac{1}{1+B(t)^2}\cdot\frac{-t(x_1t+x3-a_1t^2-a_2t-a_3)}{(x_2t+x_4)^2}=\frac{1}{1+B(t)^2}\cdot\frac{-tB(t)}{x_2t+x_4}
+\frac{\partial h}{\partial x_1}=
+-\frac{1}{1+B(t)^2}\cdot\frac{t}{x_2t+x_4}
 $$
 $$
-\frac{\partial h}{\partial x_3}=\frac{1}{1+B(t)^2}\cdot\frac{x_2+x_4}{(x_2t+x_4)^2}=\frac{1}{1+B(t)^2}\cdot\frac{1}{x_2t+x_4}
+\frac{\partial h}{\partial x_2}=
+-\frac{1}{1+B(t)^2}\cdot\frac{-t(x_1t+x_3-a_1t^2-a_2t-a_3)}{(x_2t+x_4)^2}=-\frac{1}{1+B(t)^2}\cdot\frac{-tB(t)}{x_2t+x_4}
 $$
 $$
-\frac{\partial h}{\partial x_4}=\frac{1}{1+B(t)^2}\cdot\frac{-(x_1t+x3-a_1t^2-a_2t-a_3)}{(x_2t+x_4)^2}=\frac{1}{1+B(t)^2}\cdot\frac{-B(t)}{x_2t+x_4}
+\frac{\partial h}{\partial x_3}=
+-\frac{1}{1+B(t)^2}\cdot\frac{1}{x_2t+x_4}
+$$
+$$
+\frac{\partial h}{\partial x_4}=
+-\frac{1}{1+B(t)^2}\cdot\frac{-(x_1t+x3-a_1t^2-a_2t-a_3)}{(x_2t+x_4)^2}=-\frac{1}{1+B(t)^2}\cdot\frac{-B(t)}{x_2t+x_4}
 $$
 \[
 \Phi(x)=
@@ -108,47 +112,46 @@ $$
 \end{pmatrix}
 \cdot \frac{1}{\sigma^2}
 \]
-$$N=5;\sigma=0.2 =>D=8.47\cdot10^4$$
-$$N=20;\sigma=0.2 =>D=9.94\cdot10^3$$
-$$N=5;\sigma=0.02 =>D=847$$
-$$N=20;\sigma=0.02 =>D=99$$
-Для повышения точности изменим сделаем шаг времени $t=T/10$ и  $a2=-1$ тогда
-$$N=20;\sigma=0.02 \Rightarrow D=0.59$$
-$$N=100;\sigma=0.02 \Rightarrow D=0.0049$$
+Для повышения точности сделаем шаг времени $t=T/10$ и  $a_2=-1$ тогда
+$$N=5;\sigma=0.2 =>D=19056$$
+$$N=20;\sigma=0.2 =>D=3.37$$
+$$N=100;\sigma=0.2 =>D=0.48$$
+$$N=5;\sigma=0.04 =>D=762$$
+$$N=20;\sigma=0.04 =>D=0.13$$
+$$N=100;\sigma=0.04 \Rightarrow D=0.02$$
 
 2) ММП
 
-$$\alpha'=arctg(\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{x_2t+x_4})+\delta \alpha$$
+$$\alpha'(t)=\arcctg(\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{x_2t+x_4})+\delta \alpha$$
 
-$$tg(\alpha'+\delta \alpha)=\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{ x_2t+x_4}$$
+$$ctg(\alpha'+\delta \alpha)=\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{ x_2t+x_4}$$
+
+$$
+\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{ x_2t+x_4}=ctg \alpha'-\frac{\delta \alpha}{\sin^2\alpha'}
+$$
+$$
+x_1t+x_3-a_1t^2-a_2t-a_3=ctg \alpha'(x_2t+x_4)-\frac{\delta \alpha(x_2t+x_4)}{\sin^2\alpha'}
+$$
+$$
+( x_1t+x_3-a_1t^2-a_2t-a_3-ctg\alpha'( x_2t+x_4))\frac{\sin^2\alpha'}{t}=-\delta \alpha(x_2+\frac{x_4}{t})
+$$
 
 
-$$
-\frac{x_1t+x_3-a_1t^2-a_2t-a_3}{ x_2t+x_4}=tg \alpha'+\frac{\delta \alpha}{\cos^2\alpha'}
-$$
-$$
-x_1t+x_3-a_1t^2-a_2t-a_3=tg \alpha'(x_2t+x_4)+\frac{\delta \alpha(x_2t+x_4)}{\cos^2\alpha'}
-$$
-$$
-( x_1t+x_3-a_1t^2-a_2t-a_3-tg\alpha'( x_2t+x_4))\frac{\cos^2\alpha'}{t}=\delta \alpha(x_2+\frac{x_4}{t})
-$$
-
-
-\[ J=\sum_{t=1}^{N} \lVert( x_1t+x_3-a_1t^2-a_2t-a_3-tg\alpha'( x_2t+x_4))\frac{\cos^2\alpha'}{t} \rVert^2 \rightarrow \min \]
+\[ J=\sum_{t=1}^{N} \lVert( x_1t+x_3-a_1t^2-a_2t-a_3-ctg\alpha'( x_2t+x_4))\frac{\sin^2\alpha'}{t} \rVert^2 \rightarrow \min \]
 \[
 A\cdot x=b
 \]
 
 \[
-mult=\frac{\cos^2a'(t)}{t}
+mult=\frac{\sin^2a'(t)}{t}
 \]
 \[
     mult\cdot
 \begin{pmatrix}
-    t_1 & -t_1\cdot \tg \alpha'(t_1)  & 1 & -tg \alpha'(t_1) \\
-    t_2 & -t_2\cdot \tg \alpha'(t_2)  & 1 & -tg \alpha'(t_2) \\
+    t_1 & -t_1\cdot \ctg \alpha'(t_1)  & 1 & -ctg \alpha'(t_1) \\
+    t_2 & -t_2\cdot \ctg \alpha'(t_2)  & 1 & -ctg \alpha'(t_2) \\
     \dots & \dots & \dots & \dots \\
-    t_N & -t_N\cdot \tg \alpha'(t_N)  & 1 & -tg \alpha'(t_N)
+    t_N & -t_N\cdot \ctg \alpha'(t_N)  & 1 & -ctg \alpha'(t_N)
 \end{pmatrix}
 \cdot x =    mult\cdot
 \begin{pmatrix}
@@ -160,5 +163,45 @@ mult=\frac{\cos^2a'(t)}{t}
 \]
 Далее применим МНК
 
-3)
+3) Используем также фильтр Калмана
+
+Начальные условия
+$$
+X_0=(2,2,2,2)\\
+$$
+$$
+P_0=\begin{pmatrix}
+    1 & 0 & 0 & 0  \\
+    0 & 1  & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0  & 0 & 1
+\end{pmatrix}
+$$
+Постановка задачи
+$$
+P_k^-=P_{k-1}^+
+$$
+
+$$
+X_k^-=X_{k-1}^+
+$$
+$$
+Z_k=h_kX_k+\delta\alpha
+$$
+$$
+X_k^+=X_k^-+P_k^-h_k^T(h_kP_k^-h_k^T+R)^{-1}(Z_k-h_kX_k^-)
+$$
+
+$$
+P_k^+=P_k^--P_k^-h_k^T(h_kP_k^-h_k^T+R)^{-1}h_kP_k^-
+$$
+$$
+h_k=mult \cdot\begin{pmatrix}
+    t & -t\cdot ctg \alpha'(t) & 1 & -ctg \alpha'(t)  \\
+\end{pmatrix}
+$$
+$$
+Z_k=mult\cdot (a_1t^2+a_2t+a_3)
+$$
+
 \end{document}
